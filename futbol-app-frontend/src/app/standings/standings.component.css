@@ -1,0 +1,335 @@
+/* Container principal */
+.standings-container {
+  padding: var(--spacing-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header-section {
+  margin-bottom: var(--spacing-2xl);
+  text-align: center;
+}
+
+.header-section h1 {
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xl);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Selector de Liga */
+.league-selector {
+  margin: var(--spacing-xl) 0;
+  display: flex;
+  justify-content: center;
+}
+
+.league-field {
+  min-width: 300px;
+}
+
+.league-option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.flag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background: var(--background-secondary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  min-width: 24px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+}
+
+.league-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.league-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.league-country {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.selected-league-info {
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+}
+
+.league-chip {
+  background: var(--gradient-primary) !important;
+  color: white !important;
+  font-weight: 600;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.league-chip .flag {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Estados de carga */
+.loading-container,
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-2xl);
+  text-align: center;
+}
+
+.no-data-icon {
+  font-size: 4rem;
+  width: 4rem;
+  height: 4rem;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.no-data-container h3 {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.no-data-container p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Tabla de clasificaciones */
+.standings-table-container {
+  margin-top: var(--spacing-xl);
+}
+
+.standings-card {
+  background: var(--background-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.standings-card mat-card-header {
+  background: var(--gradient-primary);
+  color: white;
+  padding: var(--spacing-lg);
+  margin: 0;
+}
+
+.standings-card mat-card-title {
+  color: white !important;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.standings-card mat-card-content {
+  padding: 0;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.standings-table {
+  width: 100%;
+  background: white;
+}
+
+.standings-table th {
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: var(--spacing-md);
+  text-align: center;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.standings-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: center;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.9rem;
+}
+
+.standings-row {
+  transition: background-color 0.2s ease;
+}
+
+.standings-row:hover {
+  background-color: var(--background-hover);
+}
+
+/* Celdas específicas */
+.position-cell {
+  text-align: center;
+  padding: var(--spacing-sm) !important;
+}
+
+.position-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.position-number.champions-league {
+  background: #1e88e5;
+  color: white;
+}
+
+.position-number.europa-league {
+  background: #ff9800;
+  color: white;
+}
+
+.position-number.relegation {
+  background: #f44336;
+  color: white;
+}
+
+.position-number.mid-table {
+  background: var(--background-secondary);
+  color: var(--text-primary);
+}
+
+.team-cell {
+  text-align: left !important;
+  min-width: 200px;
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.team-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.team-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.wins {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.draws {
+  color: #ff9800;
+  font-weight: 600;
+}
+
+.losses {
+  color: #f44336;
+  font-weight: 600;
+}
+
+.goal-diff {
+  font-weight: 600;
+}
+
+.goal-diff.positive {
+  color: #4caf50;
+}
+
+.goal-diff.negative {
+  color: #f44336;
+}
+
+.goal-diff.neutral {
+  color: var(--text-secondary);
+}
+
+.points {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .standings-container {
+    padding: var(--spacing-md);
+  }
+  
+  .header-section h1 {
+    font-size: 2rem;
+  }
+  
+  .league-field {
+    min-width: 250px;
+  }
+  
+  .team-name {
+    font-size: 0.8rem;
+  }
+  
+  .standings-table th,
+  .standings-table td {
+    padding: var(--spacing-xs);
+    font-size: 0.8rem;
+  }
+  
+  .team-logo {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .standings-table {
+    font-size: 0.7rem;
+  }
+  
+  .position-number {
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+  }
+  
+  .team-info {
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
+  }
+}

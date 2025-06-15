@@ -1,0 +1,39 @@
+<mat-toolbar color="primary" class="mat-elevation-z2">
+  <button mat-icon-button (click)="sidenav.toggle()" aria-label="Menu" class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="app-title">⚽ FutCore</span>
+  <span class="toolbar-spacer"></span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" [opened]="false" class="mat-elevation-z2" [fixedInViewport]="true" [fixedTopGap]="64">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" routerLinkActive="active-link" (click)="sidenav.close()">
+        <mat-icon>home</mat-icon>
+        <span>Inicio</span>
+      </a>
+      <a mat-list-item routerLink="/teams" routerLinkActive="active-link" (click)="sidenav.close()">
+        <mat-icon>groups</mat-icon>
+        <span>Equipos</span>
+      </a>      <a mat-list-item routerLink="/laliga-matches" routerLinkActive="active-link" (click)="sidenav.close()">
+        <mat-icon>sports_soccer</mat-icon>
+        <span>Partidos</span>
+      </a>      <a mat-list-item routerLink="/standings" routerLinkActive="active-link" (click)="sidenav.close()">
+        <mat-icon>leaderboard</mat-icon>
+        <span>Clasificaciones</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/favorites" routerLinkActive="active-link" (click)="sidenav.close()">
+        <mat-icon>star</mat-icon>
+        <span>Favoritos</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,68 @@
+<div class="home-container">
+  <h1>Bienvenido a FutCore</h1>
+  <section class="featured-matches">
+    <h2>Partidos Destacados</h2>
+    
+    <!-- Estado de carga -->
+    <div *ngIf="loading" class="loading-container">
+      <mat-spinner></mat-spinner>
+      <p>Cargando partidos destacados...</p>
+    </div>
+    
+    <!-- Mensaje de error -->
+    <div *ngIf="error && !loading" class="error-container">
+      <mat-icon>error_outline</mat-icon>
+      <p>{{ error }}</p>
+    </div>
+      <!-- Grid de partidos -->
+    <mat-grid-list *ngIf="!loading && !error && featuredMatches.length > 0" cols="3" rowHeight="240px" gutterSize="16">
+      <mat-grid-tile *ngFor="let match of featuredMatches">
+        <mat-card class="match-card">
+          <mat-card-header>
+            <mat-card-title>{{match.competition}}</mat-card-title>
+            <mat-card-subtitle>{{match.date}} - {{match.time}}</mat-card-subtitle>
+          </mat-card-header>
+          
+          <mat-card-content>
+            <div class="teams-container">
+              <span class="team home">{{match.homeTeam}}</span>
+              <span class="vs">VS</span>
+              <span class="team away">{{match.awayTeam}}</span>
+            </div>            <div class="match-status" [ngClass]="match.status">
+              <span *ngIf="match.status === 'finished' && match.score; else statusText">{{ match.score }}</span>
+              <ng-template #statusText>{{ match.status | titlecase }}</ng-template>
+            </div>
+          </mat-card-content>
+            <mat-card-actions>
+            <button mat-button color="accent">
+              <mat-icon>info</mat-icon>
+              Detalles
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>  <section class="quick-access">
+    <h2>Acceso Rápido</h2>
+    <mat-grid-list cols="3" rowHeight="140px" gutterSize="16">
+      <mat-grid-tile>
+        <mat-card class="quick-access-card" routerLink="/teams">
+          <mat-icon>groups</mat-icon>
+          <span>Equipos</span>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="quick-access-card" routerLink="/laliga-matches">
+          <mat-icon>sports_soccer</mat-icon>
+          <span>Partidos</span>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="quick-access-card" routerLink="/standings">
+          <mat-icon>leaderboard</mat-icon>
+          <span>Clasificaciones</span>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+</div>

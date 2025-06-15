@@ -1,0 +1,171 @@
+/* Toolbar moderno con gradiente */
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--gradient-primary) !important;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.app-title {
+  margin-left: var(--spacing-md);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.025em;
+}
+
+/* Botones del toolbar */
+.menu-button {
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Contenedor principal */
+mat-sidenav-container {
+  height: calc(100vh - 64px);
+  background: var(--background-color);
+  overflow-x: hidden;
+}
+
+/* Sidebar mejorado */
+mat-sidenav {
+  width: 280px;
+  background: var(--surface-color);
+  border-right: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Contenido del sidenav */
+mat-sidenav-content {
+  overflow-x: hidden;
+}
+
+/* Navegación del sidebar */
+mat-nav-list {
+  padding: var(--spacing-lg) 0;
+}
+
+mat-nav-list a {
+  height: 56px !important;
+  margin: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-lg) !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+mat-nav-list a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+mat-nav-list a:hover::before {
+  opacity: 0.1;
+}
+
+mat-nav-list a:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+mat-nav-list a mat-icon {
+  margin-right: var(--spacing-lg);
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+mat-nav-list a span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+/* Estado activo mejorado */
+.active-link {
+  background: var(--gradient-primary) !important;
+  color: white !important;
+  box-shadow: var(--shadow-md);
+}
+
+.active-link mat-icon {
+  color: white !important;
+}
+
+.active-link span {
+  color: white !important;
+  font-weight: 600;
+}
+
+.active-link::before {
+  opacity: 0 !important;
+}
+
+/* Divisor mejorado */
+mat-divider {
+  margin: var(--spacing-lg) var(--spacing-md);
+  background-color: rgba(226, 232, 240, 0.6);
+}
+
+/* Container principal */
+.container {
+  padding: var(--spacing-2xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Prevenir scroll horizontal cuando se abre el menú */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Responsive design mejorado */
+@media (max-width: 768px) {
+  mat-sidenav {
+    width: 260px;
+  }
+  
+  .container {
+    padding: var(--spacing-lg);
+  }
+  
+  .app-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  mat-sidenav {
+    width: 240px;
+  }
+  
+  .container {
+    padding: var(--spacing-md);
+  }
+  
+  mat-nav-list a {
+    margin: var(--spacing-xs) var(--spacing-sm);
+  }
+}

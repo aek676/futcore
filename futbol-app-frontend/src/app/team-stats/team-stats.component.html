@@ -1,0 +1,91 @@
+<div class="stats-container">
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error && teamStats">
+    <div class="team-header">
+      <img [src]="teamStats.team.logo" [alt]="teamStats.team.name" class="team-logo">
+      <h1>{{ teamStats.team.name }}</h1>
+    </div>
+
+    <div class="stats-grid">
+      <!-- Resumen de la Temporada -->
+      <mat-card class="stat-card">
+        <mat-card-header>
+          <mat-card-title>Resumen de la Temporada</mat-card-title>
+          <mat-card-subtitle>{{ teamStats.league.name }} {{ teamStats.league.season }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="stats-section">
+            <div class="stats-row">
+              <span class="stat-label">Partidos Jugados</span>
+              <span class="stat-value">{{ teamStats.fixtures.played.total }}</span>
+            </div>
+            <div class="stats-row">
+              <span class="stat-label">Victorias</span>
+              <span class="stat-value">{{ teamStats.fixtures.wins.total }}</span>
+            </div>
+            <div class="stats-row">
+              <span class="stat-label">Empates</span>
+              <span class="stat-value">{{ teamStats.fixtures.draws.total }}</span>
+            </div>
+            <div class="stats-row">
+              <span class="stat-label">Derrotas</span>
+              <span class="stat-value">{{ teamStats.fixtures.loses.total }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Estadísticas de Goles -->
+      <mat-card class="stat-card">
+        <mat-card-header>
+          <mat-card-title>Estadísticas de Goles</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="stats-section">
+            <div class="stats-row">
+              <span class="stat-label">Goles a Favor (Total)</span>
+              <span class="stat-value">{{ teamStats.goals.for.total.total }}</span>
+            </div>
+            <div class="stats-row">
+              <span class="stat-label">Promedio por Partido</span>
+              <span class="stat-value">{{ teamStats.goals.for.average.total }}</span>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="stats-row">
+              <span class="stat-label">Goles en Contra (Total)</span>
+              <span class="stat-value">{{ teamStats.goals.against.total.total }}</span>
+            </div>
+            <div class="stats-row">
+              <span class="stat-label">Promedio por Partido</span>
+              <span class="stat-value">{{ teamStats.goals.against.average.total }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Forma Reciente -->
+      <mat-card class="stat-card">
+        <mat-card-header>
+          <mat-card-title>Forma Reciente</mat-card-title>
+          <mat-card-subtitle>Últimos 5 partidos</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="form-section">
+            <div *ngFor="let result of teamStats.form.split('').slice(-5)"
+                 [ngClass]="getFormClasses(result)"
+                 [matTooltip]="getResultText(result)">
+              {{ result }}
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

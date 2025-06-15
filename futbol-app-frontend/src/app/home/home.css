@@ -1,0 +1,412 @@
+/* Container principal con animación */
+.home-container {
+  padding: 0;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Títulos mejorados */
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-2xl);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xl);
+  color: var(--text-primary);
+  position: relative;
+  padding-left: var(--spacing-lg);
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+/* Sección de partidos destacados */
+.featured-matches {
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* Cards de partidos modernizadas */
+.match-card {
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-xl);
+  background: var(--surface-color);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.match-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.match-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.match-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Header de la card */
+.match-card mat-card-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.match-card mat-card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.2;
+}
+
+.match-card mat-card-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+/* Contenedor de equipos mejorado */
+.teams-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--surface-color);
+  border-radius: var(--border-radius-md);
+  border: 2px solid rgba(99, 102, 241, 0.1);
+  box-shadow: var(--shadow-sm);
+  min-height: 40px;
+}
+
+.team {
+  flex: 1;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  line-height: 1.1;
+  transition: color 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 90px;
+}
+
+.team.home {
+  text-align: left;
+  padding-right: var(--spacing-xs);
+}
+
+.team.away {
+  text-align: right;
+  padding-left: var(--spacing-xs);
+}
+
+.vs {
+  padding: var(--spacing-xs);
+  color: white;
+  font-weight: 700;
+  font-size: 0.7rem;
+  background: var(--gradient-primary);
+  border-radius: var(--border-radius-sm);
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);  flex-shrink: 0;
+}
+
+/* Estados del partido mejorados */
+.match-status {
+  text-align: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-top: var(--spacing-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.match-status.upcoming {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+}
+
+.match-status.live {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  color: #166534;
+  border: 1px solid #86efac;
+  animation: pulse 2s infinite;
+}
+
+.match-status.finished {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  color: var(--text-primary);
+  border: 1px solid #cbd5e1;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* Estilo especial para scores */
+.match-status.finished span {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--primary-color);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Acciones de la card */
+.match-card mat-card-actions {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.match-card mat-card-actions button {
+  border-radius: var(--border-radius-lg);
+  font-weight: 500;
+  text-transform: none;  transition: all 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.match-card mat-card-actions button:hover {
+  transform: translateY(-1px);
+}
+
+/* Sección de acceso rápido */
+.quick-access {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.quick-access-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--surface-color);
+  border-radius: var(--border-radius-xl);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-md);
+  gap: var(--spacing-sm);
+}
+
+.quick-access-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.quick-access-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.quick-access-card:hover::before {
+  opacity: 0.1;
+}
+
+.quick-access-card mat-icon {
+  font-size: 2rem;
+  height: 2rem;
+  width: 2rem;
+  color: var(--primary-color);
+  transition: all 0.4s ease;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.quick-access-card:hover mat-icon {
+  color: white;
+  transform: scale(1.1);
+}
+
+.quick-access-card span {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  transition: color 0.4s ease;
+  z-index: 1;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.quick-access-card:hover span {
+  color: white;
+}
+
+/* Estados de carga y error para partidos destacados */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+.loading-container p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  gap: var(--spacing-md);
+  background: rgba(239, 68, 68, 0.05);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  margin: var(--spacing-lg) 0;
+}
+
+.error-container mat-icon {
+  color: var(--error-color);
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.error-container p {
+  color: var(--error-color);
+  font-size: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Responsive design mejorado */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  mat-grid-list[cols="3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .match-card {
+    padding: var(--spacing-lg);
+  }
+    .teams-container {
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+  
+  .team {
+    font-size: 0.85rem;
+  }
+  
+  .vs {
+    font-size: 0.65rem;
+    min-width: 24px;
+    height: 24px;
+  }
+  
+  .team {
+    font-size: 1rem;
+  }
+  mat-grid-list[cols="3"],
+  mat-grid-list[cols="4"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+  }
+    .teams-container {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+    min-height: 36px;
+  }
+  
+  .team {
+    font-size: 0.75rem;
+    line-height: 1.0;
+    max-width: 70px;
+  }
+  
+  .vs {
+    font-size: 0.6rem;
+    min-width: 20px;
+    height: 20px;
+    padding: 2px;
+  }
+  
+  .quick-access-card mat-icon {
+    font-size: 1.8rem;
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+  
+  .quick-access-card span {
+    font-size: 0.75rem;
+  }
+}
